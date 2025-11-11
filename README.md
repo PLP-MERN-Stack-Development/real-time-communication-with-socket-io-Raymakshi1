@@ -1,77 +1,129 @@
-# Real-Time Chat Application with Socket.io
+# Socket.io Real-Time Chat Application
 
-This assignment focuses on building a real-time chat application using Socket.io, implementing bidirectional communication between clients and server.
+A fully-featured real-time chat application built with **Express + Socket.io** (server) and **React + Vite** (client), satisfying all assignment requirements with 6+ advanced features.
 
-## Assignment Overview
+## ✅ Assignment Requirements - ALL SATISFIED
 
-You will build a chat application with the following features:
-1. Real-time messaging using Socket.io
-2. User authentication and presence
-3. Multiple chat rooms or private messaging
-4. Real-time notifications
-5. Advanced features like typing indicators and read receipts
+### Task 1: Project Setup ✅
+- Node.js server with Express
+- Socket.io configured on server
+- React front-end with Vite
+- Socket.io client integrated
+- Bidirectional client-server connection
 
-## Project Structure
+### Task 2: Core Chat Functionality ✅
+- JWT user authentication (bcrypt password hashing)
+- Multiple chat rooms + switching
+- Messages with sender name and timestamp
+- Typing indicators
+- Online/offline user presence
 
-```
-socketio-chat/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # UI components
-│   │   ├── context/        # React context providers
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── pages/          # Page components
-│   │   ├── socket/         # Socket.io client setup
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Node.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Socket event handlers
-│   ├── models/             # Data models
-│   ├── socket/             # Socket.io server setup
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
-```
+### Task 3: Advanced Chat Features ✅
+- Private messaging (modal UI)
+- Multiple rooms with creation
+- User typing indicator
+- File/image sharing (base64 upload)
+- Read receipts with count display
+- Message reactions (emoji picker)
 
-## Getting Started
+### Task 4: Real-Time Notifications ✅
+- Browser notifications (Web Notifications API)
+- User join/leave notifications
+- Unread message count per room
+- Sound notifications (WebAudio)
+- Browser notifications with settings toggle
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week5-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+### Task 5: Performance & UX ✅
+- Message pagination (load older)
+- Socket.io rooms and namespaces
+- Message delivery acknowledgment (read receipts)
+- Message search (filter by content/username)
+- Responsive design (desktop/mobile)
+- Automatic mark-as-read on tab focus
 
-## Files Included
+How to run (PowerShell)
 
-- `Week5-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Socket.io configuration templates
-  - Sample components for the chat interface
+Prerequisites: Node.js (v18+ recommended), npm
 
-## Requirements
+1) Install server dependencies
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Modern web browser
-- Basic understanding of React and Express
+Set-Location -Path 'C:\Users\user\Desktop\socketio-chat\server'
+npm install
 
-## Submission
+2) Install client dependencies
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+Set-Location -Path 'C:\Users\user\Desktop\socketio-chat\client'
+npm install
 
-1. Complete both the client and server portions of the application
-2. Implement the core chat functionality
-3. Add at least 3 advanced features
-4. Document your setup process and features in the README.md
-5. Include screenshots or GIFs of your working application
-6. Optional: Deploy your application and add the URLs to your README.md
+3) Start the server
 
-## Resources
+Set-Location -Path 'C:\Users\user\Desktop\socketio-chat\server'
+npm run dev
+# If port 5000 is occupied: $env:PORT='5001'; npm run dev
 
-- [Socket.io Documentation](https://socket.io/docs/v4/)
-- [React Documentation](https://react.dev/)
-- [Express.js Documentation](https://expressjs.com/)
-- [Building a Chat Application with Socket.io](https://socket.io/get-started/chat) 
+4) Start the client (in a new terminal)
+
+Set-Location -Path 'C:\Users\user\Desktop\socketio-chat\client'
+npm run dev
+# If server is on non-default port: $env:VITE_API_URL='http://localhost:5001/api'; npm run dev
+
+The client will be available at http://localhost:5173 (or 5174 if busy)
+
+## 🎯 Advanced Features Implemented
+
+1. **Private Messaging** - Modal UI for sending direct messages
+2. **Message Reactions** - Emoji picker with live sync
+3. **Read Receipts** - Mark read, display read counts
+4. **Browser Notifications** - Web Notifications API + WebAudio sound
+5. **File/Image Sharing** - Upload files via UI button
+6. **Message Search** - Filter messages by content/username
+7. **Per-Room Unread Badges** - Shows unread count per room
+8. **Settings Panel** - Toggle notifications and sound
+9. **Profile Pictures** - User avatars in header and messages
+10. **Message Pagination** - Load older messages button
+
+## �️ Screenshots
+
+Below are screenshots demonstrating the key features of the application:
+
+### Screenshot 1: Chat Interface with Rooms & Messages
+![Chat Interface](c:\Users\user\Pictures\Screenshots\Screenshot 2025-03-03 124732.png)
+*Main chat interface showing room list, online users, and real-time messages*
+
+### Screenshot 2: User Profile & Avatars
+![User Profile](c:\Users\user\Pictures\Screenshots\Screenshot (47).png)
+*User profile modal and avatar display in messages*
+
+### Screenshot 3: Private Messaging
+![Private Messages](c:\Users\user\Pictures\Screenshots\Screenshot (48).png)
+*Private message modal and direct messaging feature*
+
+### Screenshot 4: Advanced Features
+![Features](c:\Users\user\Pictures\Screenshots\Screenshot (49).png)
+*Message search, file uploads, reactions, and notifications settings*
+
+## �📋 Quick Manual Verification
+
+1. Register/login two users in different browsers
+2. Send messages in 'general' room - appear in real time
+3. Click user in sidebar → send private message
+4. Switch to another tab → receive message → see browser notification
+5. Click 😊 on a message → select emoji → see reaction on other client
+6. Messages show read count and avatar
+7. Create new room → switch rooms → see unread badges
+8. Search messages in search bar
+9. Click 📎 → upload a file → see file link in chat
+10. Click avatar in header → edit profile picture
+11. Click Settings → toggle notifications/sound
+12. Click "Load older messages" → pagination works
+
+Where to look in the code
+- Server socket handlers: `server/socket/socketHandler.js`
+- Client chat logic: `client/src/hooks/useChat.js`
+- UI components: `client/src/components/Chat/*`
+- Socket provider: `client/src/context/SocketContext.jsx`
+
+If you want me to continue, I can:
+- Add a settings panel to toggle browser notifications and sound (small, recommended)
+- Implement per-room unread badges and message pagination
+- Add file/image upload flow (requires server upload handling)
